@@ -1,6 +1,9 @@
 pipeline {
     agent any
 
+    environment {
+        MAVEN_HOME='/usr/share/maven' //Path to Maven Installation
+    }
     stages {
         stage('Checkout Code') { // Clones the repository
             steps {
