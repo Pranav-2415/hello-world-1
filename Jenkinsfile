@@ -22,7 +22,7 @@ pipeline {
 
 
 
-
+    }
 
 
     post {
@@ -42,5 +42,4 @@ pipeline {
     }
 
 }
-}
-}
+
