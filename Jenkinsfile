@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Checkout Code') { // Clones the repository
             steps {
-                git 'https://github.com/hello-world-1/java-app.git'
+                git 'https://github.com/Pranav-2415/hello-world-1.git'
             }
         }
         stage('Build with Maven') { // Builds the project and creates JAR/WAR
