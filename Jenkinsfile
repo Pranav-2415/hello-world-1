@@ -1,76 +1,41 @@
 pipeline {
-
     agent any
-
     stages {
-
         stage('Checkout Code') {
-
             steps {
-
                 git 'https://github.com/Pranav-2415/hello-world-1.git'
-
             }
-
         }
-
         stage('Build with Maven') {
-
             steps {
-
                 sh 'mvn clean package'
-
             }
-
         }
-
         stage('Run Unit Tests') {
-
             steps {
-
                 sh 'mvn test'
-
             }
-
         }
-
         stage('Code Analysis with SonarQube') {
-
             environment {
-
-                SONARQUBE_SERVER = 'sonarqube' // Replace with your SonarQube installation name configured in Jenkins
-
+                SONARQUBE_SERVER = 'Pranav-homework-token2'  // Your Jenkins SonarQube server name
             }
-
             steps {
-
                 withSonarQubeEnv(SONARQUBE_SERVER) {
-
-                    sh 'mvn sonar:sonar'
-
+                    // Use the specific tool if configured
+                    // If you want to specify the scanner manually, create and use the tool
+                    // Otherwise, mvn plugin uses sonar-scanner internally
+                    sh 'mvn sonar:sonar -Dsonar.projectKey=Pranav-sonarqube-project'
                 }
-
             }
-
         }
-
     }
-
     post {
-
         success {
-
-            echo 'Build and deployment successful!'
-
+            echo 'Build and SonarQube analysis completed successfully!'
         }
-
         failure {
-
-            echo 'Build failed!'
-
+            echo 'There was a failure in build or SonarQube analysis.'
         }
-
     }
-
 }
- 
